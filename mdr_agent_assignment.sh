@@ -10,7 +10,13 @@
 # To use this script pass it the Alert Logic customer ID (CID) as
 # the one and only parameter. And provide the user name and password
 # use to access the Alert Logic console.
+#
+# Dependencies:
 # 
+# - curl
+# - jq, https://stedolan.github.io/jq/ 
+#
+#
 # Usage:
 # mdr_agent_assignment <cid>
 #
