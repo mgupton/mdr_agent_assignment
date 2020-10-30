@@ -63,6 +63,6 @@ jq -r '.environments[] | [.id, .name] | @csv' $working_dir/deployments.json | so
 
 echo "Getting assignment data."
 echo "agent,appliance,deployment" > $working_dir/agent_assignment.csv
-join -o 1.1,2.2,1.3 -t , -1 2 -2 1 <(sort -t "," -k 2,2 $working_dir/agents.csv) <(sort -t "," -k 1,1 $working_dir/appliances.csv) | sort -t "," -k 3,3 | join -t , -o 1.1,1.2,2.2 -1 3 -2 1 - $working_dir/deployments.csv >> $working_dir/agent_assignment.csv
+join -a 1 -o 1.1,2.2,1.3 -t , -1 2 -2 1 <(sort -t "," -k 2,2 $working_dir/agents.csv) <(sort -t "," -k 1,1 $working_dir/appliances.csv) | sort -t "," -k 3,3 | join -t , -o 1.1,1.2,2.2 -1 3 -2 1 - $working_dir/deployments.csv >> $working_dir/agent_assignment.csv
 
 echo "Agent assignment info is in the file: " $working_dir/agent_assignment.csv
